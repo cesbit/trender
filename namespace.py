@@ -1,5 +1,5 @@
-from exceptions import MacroOrBlockExistError
-from exceptions import MacroOrBlockNotDefinedError
+from .exceptions import MacroOrBlockExistError
+from .exceptions import MacroOrBlockNotDefinedError
 
 
 class Namespace:

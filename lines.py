@@ -1,5 +1,5 @@
 import re
-from constants import MAP_LINE_TYPE, LINE_PASTE
+from .constants import MAP_LINE_TYPE, LINE_PASTE
 
 
 class Lines:

@@ -1,5 +1,5 @@
 import re
-from exceptions import MacroBlockUsageError
+from .exceptions import MacroBlockUsageError
 
 
 class BlockPaste:

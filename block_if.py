@@ -1,7 +1,7 @@
 import re
-from exceptions import DefineBlockError
-from exceptions import MissingInNamespaceError
-from constants import (
+from .exceptions import DefineBlockError
+from .exceptions import MissingInNamespaceError
+from .constants import (
     ALWAYS_ALLOWED,
     LINE_ELIF,
     LINE_ELSE,
@@ -13,10 +13,10 @@ class BlockIf:
     RE_IF = re.compile('^\s*#(if|elif)\s+@([a-zA-Z_]+)\s*:\s*$', re.UNICODE)
 
     def __init__(self, lines):
-        from block import Block
+        from .block import Block
         m = self.RE_IF.match(lines.current)
         if m is None:
-            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(line.pos, line.current))
+            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))
 
         self._evaluate = m.group(2)
 
@@ -30,7 +30,4 @@ class BlockIf:
             return self._block_true.render(namespace)
         if self._block_false is not None:
             return self._block_false.render(namespace)
-        return ''
-
-
-
+        return None

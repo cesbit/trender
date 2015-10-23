@@ -1,10 +1,12 @@
-from block_text import BlockText
-from block_if import BlockIf
-from block_for import BlockFor
-from block_macro import BlockMacro
-from block_block import BlockBlock
-from block_paste import BlockPaste
-from constants import (
+from .block_text import BlockText
+from .block_if import BlockIf
+from .block_for import BlockFor
+from .block_macro import BlockMacro
+from .block_block import BlockBlock
+from .block_paste import BlockPaste
+from .exceptions import UnexpectedBlockError
+from .exceptions import UnexpectedEOFError
+from .constants import (
     LINE_IF,
     LINE_ELIF,
     LINE_FOR,
@@ -63,7 +65,7 @@ class Block:
             raise RuntimeError('Damm, we should not get here. Current line:', lines.current)
         else:
             if not allowed & EOF_TEXT:
-                raise UnexpectedBlockError('Unexpected end of file, missing #end')
+                raise UnexpectedEOFError('Unexpected end of file, missing #end')
         self._reset_plain()
 
     def _reset_plain(self):

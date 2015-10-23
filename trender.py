@@ -1,8 +1,7 @@
-import re
-from lines import Lines
-from block import Block
-from namespace import Namespace
-from constants import ALWAYS_ALLOWED, EOF_TEXT
+from .lines import Lines
+from .block import Block
+from .namespace import Namespace
+from .constants import ALWAYS_ALLOWED, EOF_TEXT
 
 
 class TRender:
@@ -20,7 +19,6 @@ class TRender:
 if __name__ == '__main__':
     import gc
     import time
-    import sys
     # make sure we start empty
     gc.collect()
 
@@ -55,5 +53,3 @@ Naam: @foo
     })
     t = time.time() - start
     print(result, '\n\nRendered in {}, Collected items: {}'.format(t, gc.collect()))
-
-

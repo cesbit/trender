@@ -14,6 +14,10 @@ class UnexpectedBlockError(CompileException):
     pass
 
 
+class UnexpectedEOFError(CompileException):
+    pass
+
+
 class DefineBlockError(CompileException):
     pass
 

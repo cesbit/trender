@@ -1,11 +1,15 @@
 from .exceptions import MacroOrBlockExistError
 from .exceptions import MacroOrBlockNotDefinedError
 
+class _DefaultEmpty(dict):
+
+    def __missing__(self, key):
+        return ''
 
 class Namespace:
 
     def __init__(self, dictionary=None, macros=None, blocks=None):
-        self.dictionary = dictionary or {}
+        self.dictionary = _DefaultEmpty(dictionary or {})
         self._macros = macros or {}
         self._blocks = blocks or {}
 

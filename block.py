@@ -24,8 +24,13 @@ class Block:
 
     def __init__(self, lines, allowed):
         self._blocks = []
-        self._text = []
+        self._compile(lines)
 
+    def render(self, namespace):
+        return '\n'.join([text for text in [block.render(namespace) for block in self._blocks] if text is not None])
+
+    def _compile(self, lines):
+        self._text = []
         while lines.next is not None:
             if not allowed & lines.current_type:
                 raise UnexpectedBlockError('Unexpected block at: {}, {}'.format(lines.pos, lines.current))
@@ -72,6 +77,3 @@ class Block:
         if self._text:
             self._blocks.append(BlockText('\n'.join(self._text)))
         self._text.clear()
-
-    def render(self, namespace):
-        return '\n'.join([text for text in [block.render(namespace) for block in self._blocks] if text is not None])

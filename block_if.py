@@ -14,12 +14,7 @@ class BlockIf:
 
     def __init__(self, lines):
         from .block import Block
-        m = self.RE_IF.match(lines.current)
-        if m is None:
-            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))
-
-        self._evaluate = m.group(2)
-
+        self._evaluate = self._compile(lines)
         self._block_true = Block(lines, allowed=ALWAYS_ALLOWED | LINE_ELIF | LINE_ELSE | LINE_END)
         self._block_false = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END) if lines.current_type == LINE_ELSE else None
 
@@ -31,3 +26,9 @@ class BlockIf:
         if self._block_false is not None:
             return self._block_false.render(namespace)
         return None
+
+    def _compile(self, lines):
+        m = self.RE_IF.match(lines.current)
+        if m is None:
+            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))
+        return m.group(2)

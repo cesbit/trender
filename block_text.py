@@ -9,18 +9,10 @@ class BlockText:
         self._text = self._compile(text)
 
     def render(self, namespace):
-        _temp = self._dict.copy()
-        _temp.update(namespace.dictionary)
-        return self._text.format(**_temp)
+        return self._text.format_map(namespace.dictionary)
 
     def _compile(self, text):
-        self._dict = {}
         text = text.replace('{', '{{').replace('}', '}}')
-        text = self.RE_VAR.sub(self._build_required_dict, text)
+        text = self.RE_VAR.sub(lambda m: '{' + m.group()[1:] + '}', text)
         text = text.replace('@!', '@')
         return text
-
-    def _build_required_dict(self, m):
-        var = m.group()[1:]
-        self._dict[var] = ''
-        return '{' + var + '}'

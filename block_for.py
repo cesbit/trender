@@ -10,11 +10,7 @@ class BlockFor:
 
     def __init__(self, lines):
         from .block import Block
-        m = self.RE_FOR.match(lines.current)
-        if m is None:
-            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #for @item in @items:'.format(lines.pos, lines.current))
-        self._item = m.group(1)
-        self._items = m.group(2)
+        self._item, self._items = self._compile(lines)
         self._block = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END)
 
     def render(self, namespace):
@@ -26,3 +22,9 @@ class BlockFor:
             ns[self._item] = item
             result.append(self._block.render(ns))
         return '\n'.join(result)
+
+    def _compile(self, lines):
+        m = self.RE_FOR.match(lines.current)
+        if m is None:
+            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #for @item in @items:'.format(lines.pos, lines.current))
+        return m.group(1), m.group(2)

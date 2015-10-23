@@ -1,0 +1,6 @@
+*.pyc
+*.pyo
+*.module-cache*
+.project
+.pydevproject
+

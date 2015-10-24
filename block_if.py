@@ -1,6 +1,5 @@
 import re
 from .exceptions import DefineBlockError
-from .exceptions import MissingInNamespaceError
 from .constants import (
     ALWAYS_ALLOWED,
     LINE_ELIF,
@@ -19,8 +18,6 @@ class BlockIf:
         self._block_false = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END) if lines.current_type == LINE_ELSE else None
 
     def render(self, namespace):
-        if self._evaluate not in namespace:
-            raise MissingInNamespaceError('Missing in namespace: {}'.format(self._evaluate))
         if namespace[self._evaluate]:
             return self._block_true.render(namespace)
         if self._block_false is not None:

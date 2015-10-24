@@ -26,10 +26,6 @@ class MacroBlockUsageError(CompileException):
     pass
 
 
-class MissingInNamespaceError(RenderException):
-    pass
-
-
 class EvaluateError(RenderException):
     pass
 

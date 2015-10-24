@@ -6,11 +6,10 @@ class BlockText:
     RE_VAR = re.compile('@[a-zA-Z_]+', re.UNICODE)
 
     def __init__(self, text):
-        self._text = self._compile(text)
         self._need_format = False
+        self._text = self._compile(text)
 
     def render(self, namespace):
-        print('here', self._need_format)
         return self._text.format_map(namespace.dictionary) if self._need_format else self._text
 
     def _compile(self, text):

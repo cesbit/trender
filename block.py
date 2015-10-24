@@ -16,6 +16,7 @@ from .constants import (
     LINE_TEXT,
     LINE_END,
     LINE_PASTE,
+    LINE_COMMENT,
     EOF_TEXT
 )
 
@@ -24,16 +25,19 @@ class Block:
 
     def __init__(self, lines, allowed):
         self._blocks = []
-        self._compile(lines)
+        self._compile(lines, allowed)
 
     def render(self, namespace):
         return '\n'.join([text for text in [block.render(namespace) for block in self._blocks] if text is not None])
 
-    def _compile(self, lines):
+    def _compile(self, lines, allowed):
         self._text = []
         while lines.next is not None:
             if not allowed & lines.current_type:
                 raise UnexpectedBlockError('Unexpected block at: {}, {}'.format(lines.pos, lines.current))
+
+            if lines.current_type == LINE_COMMENT:
+                continue
 
             if lines.current_type == LINE_IF or lines.current_type == LINE_ELIF:
                 self._reset_plain()

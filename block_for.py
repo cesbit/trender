@@ -1,6 +1,5 @@
 import re
 from .exceptions import DefineBlockError
-from .exceptions import MissingInNamespaceError
 from .constants import ALWAYS_ALLOWED, LINE_END
 
 
@@ -14,14 +13,12 @@ class BlockFor:
         self._block = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END)
 
     def render(self, namespace):
-        if self._items not in namespace:
-            raise MissingInNamespaceError('Missing in namespace: {}'.format(self._items))
         ns = namespace.copy()
         result = []
         for item in namespace[self._items]:
             ns[self._item] = item
             result.append(self._block.render(ns))
-        return '\n'.join(result)
+        return '\n'.join(result) if result else None
 
     def _compile(self, lines):
         m = self.RE_FOR.match(lines.current)

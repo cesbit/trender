@@ -1,4 +1,3 @@
-import os
 from aiohttp import web
 from .trender import TRender
 
@@ -21,7 +20,4 @@ def template(template_name):
 
 def setup_template_loader(template_path):
     for template_name in _templates:
-        fn = os.path.join(template_path, template_name)
-        with open(fn, 'r', encoding='utf-8') as f:
-            content = f.read()
-        _templates[template_name] = TRender(content)
+        _templates[template_name] = TRender(template_name, path=template_path)

@@ -6,8 +6,8 @@ from .constants import ALWAYS_ALLOWED, EOF_TEXT
 
 class TRender:
 
-    def __init__(self, text):
-        lines = Lines(text.splitlines())
+    def __init__(self, content_or_file, path=None):
+        lines = Lines(content_or_file, path)
         self._block = Block(lines, allowed=ALWAYS_ALLOWED | EOF_TEXT)
 
     def render(self, namespace={}):

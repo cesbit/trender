@@ -1,4 +1,5 @@
 import re
+import os
 from .constants import MAP_LINE_TYPE, LINE_PASTE
 
 
@@ -6,9 +7,16 @@ class Lines:
 
     RE_BLOCK = re.compile('\s*#([a-zA-Z_]*)', re.UNICODE)
 
-    def __init__(self, lines):
-        self._lines = lines
+    def __init__(self, content_or_file, path=None):
+        if path is not None:
+            fn = os.path.join(path, content_or_file)
+            with open(fn, 'r', encoding='utf-8') as f:
+                content = f.read()
+        else:
+            content = content_or_file
+        self._lines = content.splitlines()
         self._gen_lines = self._reader()
+        self._path = path
 
     @property
     def next(self):

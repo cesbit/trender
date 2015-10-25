@@ -3,7 +3,7 @@ import re
 
 class BlockText:
 
-    RE_VAR = re.compile('@[a-zA-Z_]+', re.UNICODE)
+    RE_VAR = re.compile('@([a-zA-Z0-9_\.]+)(!?)', re.UNICODE)
 
     def __init__(self, text):
         self._need_format = False
@@ -20,4 +20,4 @@ class BlockText:
 
     def _set_vars(self, m):
         self._need_format = True
-        return '{' + m.group()[1:] + '}'
+        return '{' + m.group(1).replace('.', '-') + '}'

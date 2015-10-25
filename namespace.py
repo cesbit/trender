@@ -1,10 +1,20 @@
 from .exceptions import MacroOrBlockExistError
 from .exceptions import MacroOrBlockNotDefinedError
 
+
 class _DefaultEmpty(dict):
 
-    def __missing__(self, key):
-        return ''
+    def __missing__(self, key, seperator='-', empty=''):
+        if seperator not in key:
+            return empty
+        value = self
+        try:
+            for k in key.split(seperator):
+                value = value.get(k, empty)
+        except AttributeError:
+            return empty
+        return value
+
 
 class Namespace:
 

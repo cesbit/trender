@@ -5,7 +5,7 @@ from .constants import ALWAYS_ALLOWED, LINE_END
 
 class BlockMacro:
 
-    RE_MACRO = re.compile('^\s*#macro\s+([a-zA-Z_]+)\s*:\s*$', re.UNICODE)
+    RE_MACRO = re.compile('^\s*#macro\s+([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
 
     def __init__(self, lines):
         from .block import Block

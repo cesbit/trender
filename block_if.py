@@ -9,13 +9,18 @@ from .constants import (
 
 class BlockIf:
 
-    RE_IF = re.compile('^\s*#(if|elif)\s+@([a-zA-Z_]+)\s*:\s*$', re.UNICODE)
+    RE_IF = re.compile('^\s*#(if|elif)\s+@([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
 
     def __init__(self, lines):
         from .block import Block
         self._evaluate = self._compile(lines)
         self._block_true = Block(lines, allowed=ALWAYS_ALLOWED | LINE_ELIF | LINE_ELSE | LINE_END)
-        self._block_false = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END) if lines.current_type == LINE_ELSE else None
+        if lines.current_type == LINE_ELSE:
+            self._block_false = Block(lines, allowed=ALWAYS_ALLOWED | LINE_END)
+        elif lines.current_type == LINE_ELIF:
+            self._block_false = BlockIf(lines)
+        else:
+            self._block_false = None
 
     def render(self, namespace):
         if namespace[self._evaluate]:

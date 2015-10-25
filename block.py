@@ -39,7 +39,7 @@ class Block:
             if lines.current_type == LINE_COMMENT:
                 continue
 
-            if lines.current_type == LINE_IF or lines.current_type == LINE_ELIF:
+            if lines.current_type == LINE_IF:
                 self._reset_plain()
                 self._blocks.append(BlockIf(lines))
                 continue
@@ -64,7 +64,7 @@ class Block:
                 self._blocks.append(BlockPaste(lines))
                 continue
 
-            if lines.current_type == LINE_END or lines.current_type == LINE_ELSE:
+            if lines.current_type == LINE_END or lines.current_type == LINE_ELSE or lines.current_type == LINE_ELIF:
                 break
 
             if lines.current_type == LINE_TEXT:

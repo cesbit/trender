@@ -23,3 +23,6 @@ MAP_LINE_TYPE = {
     'block': LINE_BLOCK,
     '': LINE_COMMENT
 }
+
+VAR = 'a-zA-Z0-9_'
+VAR_DOTS = VAR + '\.'

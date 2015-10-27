@@ -1,10 +1,11 @@
 import re
 from .exceptions import MacroBlockUsageError
+from .constants import VAR
 
 
 class BlockPaste:
 
-    RE_PASTE = re.compile('^\s*#([a-zA-Z0-9_]+)\s*$', re.UNICODE)
+    RE_PASTE = re.compile('^\s*#([{VAR}]+)\s*$'.format(VAR=VAR), re.UNICODE)
 
     def __init__(self, lines):
         self._name = self._compile(lines)

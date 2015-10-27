@@ -4,12 +4,13 @@ from .constants import (
     ALWAYS_ALLOWED,
     LINE_ELIF,
     LINE_ELSE,
-    LINE_END)
+    LINE_END,
+    VAR_DOTS)
 
 
 class BlockIf:
 
-    RE_IF = re.compile('^\s*#(if|elif)\s+@([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
+    RE_IF = re.compile('^\s*#(if|elif)\s+@([{VAR_DOTS}]+)\s*:\s*$'.format(VAR_DOTS=VAR_DOTS), re.UNICODE)
 
     def __init__(self, lines):
         from .block import Block
@@ -33,4 +34,4 @@ class BlockIf:
         m = self.RE_IF.match(lines.current)
         if m is None:
             raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))
-        return m.group(2)
+        return m.group(2).replace('.', '-')

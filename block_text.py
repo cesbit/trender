@@ -1,9 +1,10 @@
 import re
+from .constants import VAR_DOTS
 
 
 class BlockText:
 
-    RE_VAR = re.compile('@([a-zA-Z0-9_\.]+)(!?)', re.UNICODE)
+    RE_VAR = re.compile('@([{VAR_DOTS}]+)(!?)'.format(VAR_DOTS=VAR_DOTS), re.UNICODE)
 
     def __init__(self, text):
         self._need_format = False

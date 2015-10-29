@@ -10,13 +10,14 @@ from .constants import (
     LINE_IF,
     LINE_ELIF,
     LINE_FOR,
-    LINE_MARCO,
+    LINE_MACRO,
     LINE_BLOCK,
     LINE_ELSE,
     LINE_TEXT,
     LINE_END,
     LINE_PASTE,
     LINE_COMMENT,
+    LINE_INCLUDE,
     EOF_TEXT
 )
 
@@ -49,7 +50,7 @@ class Block:
                 self._blocks.append(BlockFor(lines))
                 continue
 
-            if lines.current_type == LINE_MARCO:
+            if lines.current_type == LINE_MACRO:
                 self._reset_plain()
                 self._blocks.append(BlockMacro(lines))
                 continue
@@ -62,6 +63,10 @@ class Block:
             if lines.current_type == LINE_PASTE:
                 self._reset_plain()
                 self._blocks.append(BlockPaste(lines))
+                continue
+
+            if lines.current_type == LINE_INCLUDE:
+                lines.include()
                 continue
 
             if lines.current_type == LINE_END or lines.current_type == LINE_ELSE or lines.current_type == LINE_ELIF:

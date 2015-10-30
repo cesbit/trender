@@ -102,8 +102,8 @@ Comments should start with `##` or a `#` followed by a `space`.
 
 Example:
 ```
-# This is a comment
-##This is a comment too
+# This is a comment line
+##This is a comment line too
 ```
 
 Conditionals

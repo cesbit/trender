@@ -22,6 +22,10 @@ class DefineBlockError(CompileException):
     pass
 
 
+class TemplateNotExistsError(CompileException):
+    pass
+
+
 class MacroBlockUsageError(CompileException):
     pass
 

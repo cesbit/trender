@@ -4,6 +4,7 @@ from .block_for import BlockFor
 from .block_macro import BlockMacro
 from .block_block import BlockBlock
 from .block_paste import BlockPaste
+from .block_extend import BlockExtend
 from .exceptions import UnexpectedBlockError
 from .exceptions import UnexpectedEOFError
 from .constants import (
@@ -18,6 +19,7 @@ from .constants import (
     LINE_PASTE,
     LINE_COMMENT,
     LINE_INCLUDE,
+    LINE_EXTEND,
     EOF_TEXT
 )
 
@@ -67,6 +69,11 @@ class Block:
 
             if lines.current_type == LINE_INCLUDE:
                 lines.include()
+                continue
+
+            if lines.current_type == LINE_EXTEND:
+                self._reset_plain()
+                self._blocks.append(BlockExtend(lines))
                 continue
 
             if lines.current_type == LINE_END or lines.current_type == LINE_ELSE or lines.current_type == LINE_ELIF:

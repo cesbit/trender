@@ -1,3 +1,4 @@
+import pprint
 from .exceptions import MacroOrBlockExistError
 from .exceptions import MacroOrBlockNotDefinedError
 
@@ -60,3 +61,9 @@ class Namespace:
         if self.has_macro_or_block(name):
             raise MacroOrBlockExistError('macro or block {} already defined'.format(name))
         self._blocks[name] = block
+
+    def __str__(self):
+        return pprint.pformat({
+            'namespace': self.dictionary,
+            'macros': list(self._macros),
+            'blocks': list(self._blocks)})

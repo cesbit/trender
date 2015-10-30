@@ -31,14 +31,14 @@ print(output) # => Hello world!
 	
 Basics
 ------
-TRender can use both a simple string as input or a filename. 
+TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be compiled with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to compile extremly fast rendering a compiled template should be very fast.
 
 When using a filename we also need to specify a path, like: `
 ```python
 TRender('base.template', path='path_to_file')
 ```
 
-Note that path should be the root path for your templates so assume we have the following path structure:
+Note that `path` should be the root path for your templates. Assume we have the following path structure:
 
 	/templates/
 	/templates/pages/

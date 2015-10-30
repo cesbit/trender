@@ -23,7 +23,7 @@ Quick usage
 ===========
 
 
-'''python
+```python
 from trender import TRender
 
 template = '@greet world!'
@@ -31,7 +31,7 @@ compiled = TRender(template)
 output = compiled.render({'greet': 'Hello'})
 
 print(output) # => Hello world! 
-'''	
+```	
 	
 Basics
 ======
@@ -61,42 +61,45 @@ Variable in a template are prefixed with an `@` and optionally can be closed wit
 
 Examples:
 
-'''python
+```python
 # Just render a simple variable...
 
 TRender('@name is perfect').render({
 	'name': 'Iris'
 }) 
 # Output => "Iris is perfect"
-'''
+```
 
-
-	# Escape @ to render an email address...
+```python
+# Escape @ to render an email address...
 	
-	TRender('@name@!@domain').render({
-		'name': 'iris', 
-		'domain': 'home.nl'
-	})
-	# Output => "iris@home.nl"
+TRender('@name@!@domain').render({
+	'name': 'iris', 
+	'domain': 'home.nl'
+})
+# Output => "iris@home.nl"
+```
 
+```python
+# Use nested variable (you can use nesting as deep as you want)...
 
-	# Use nested variable (you can use nesting as deep as you want)...
-	
-	TRender('@person.name is @person.age years old').render({
-		'person': {
-			'name': 'Iris', 
-			'age': 2
-		}
-	})
-	# Output => "Iris is 2 years old"
+TRender('@person.name is @person.age years old').render({
+	'person': {
+		'name': 'Iris', 
+		'age': 2
+	}
+})
+# Output => "Iris is 2 years old"
+```
 
-	# Close variable when needed...
-	
-	TRender('@name!IsPerfect').render({
-		'name': 'Iris'
-	})
-	# Output => "IrisIsPerfect"
+```python
+# Close variable when needed...
 
+TRender('@name!IsPerfect').render({
+	'name': 'Iris'
+})
+# Output => "IrisIsPerfect"
+```
 
 Conditionals
 ============
@@ -107,37 +110,40 @@ If a conditional is not available in the namespace it will evaluate as `false`.
 
 Simple example:
 
-	TRender('''
-	
-	#if @perfect:
-		I'm perfect
-	#elif @almost_perfect:
-		I'm almost perfect
-	#else:
-		I'm not perfect..
-	#end
-	
-	''').render({'almost_perfect': true}) 
-	
-	# Output => "I'm almost perfect"
-		
+```python
+TRender('''
+
+#if @perfect:
+	I'm perfect
+#elif @almost_perfect:
+	I'm almost perfect
+#else:
+	I'm not perfect..
+#end
+
+''').render({'almost_perfect': true}) 
+
+# Output => "I'm almost perfect"
+```
+
 Complex example (actually it's not really complex...)
 
-	TRender('''
-	
-	#if @old_enough(@person.age):
-		I'm old enough
-	#else:
-		I'm NOT old enough
-	#end
-	
-	''').render({
-		'old_enough': lambda age: age >= 18,
-		'person': {'age': 37}
-	})
-	
-	# Output => "I'm old enough"
+```python
+TRender('''
 
+#if @old_enough(@person.age):
+	I'm old enough
+#else:
+	I'm NOT old enough
+#end
+
+''').render({
+	'old_enough': lambda age: age >= 18,
+	'person': {'age': 37}
+})
+
+# Output => "I'm old enough"
+```
 
 Loops
 =====

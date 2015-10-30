@@ -160,6 +160,64 @@ TRender('''
 	Iris is 2 years old
 	Sasha is 30 years old
 ```
+
+Blocks
+------
+Sometimes you want to define a block an re-use this block several times.
+
+Example:
+```python
+TRender('''
+
+#block Item:
+    <li>@item</li>
+#end
+
+<ul>
+#for @item in @items.black:
+    #Item
+#end
+</ul>
+
+''').render({
+    'items': ['laptop', 'mouse']
+})
+
+# Output =>
+    <ul>
+        <li>laptop</li>
+        <li>mouse</li>
+    </ul>
+```
+
+Macros
+------
+Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro.
+
+Include
+-------
+Including files is only possible when using a template file as source. Includes happen at compile time so they have no extra costs during rendering. 
+
+Example:
+```python
+# base.template
+<h1>Let include a file</h1>
+#include another.template
+<span>Yes, it worked!</span>
+
+# another.template
+<span>Please, include me...</span>
+
+# Now compile and render the templates
+TRender('base.template', '.').render()
+
+# Output =>
+    <h1>Let include a file</h1>
+    <span>Please, include me...</span>
+    <span>Yes, it worked!</span>
+
+
+```
 		
 Usage TRender with aiohttp (web server)
 ---------------------------------------
@@ -171,7 +229,6 @@ from trender.aiohttp_template import setup_template_loader
 from trender.aiohttp_template import template
 
 # This will setup the template loader. Make sure you run this only once.
-
 setup_template_loader('/my_template_path')
 
 

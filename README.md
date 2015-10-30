@@ -258,7 +258,7 @@ TRender('some.template', '.').render()
 #    <span>This is just some content...</span>
 #    </body>
 #    </html>
-
+```
 		
 Usage TRender with aiohttp (web server)
 ---------------------------------------

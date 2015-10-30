@@ -14,6 +14,10 @@ class BlockExtend:
     RE_EXTEND = re.compile('^\s*#extend\s+([{FILENAME}]+)\s*:\s*$'.format(FILENAME=FILENAME), re.UNICODE)
 
     def __init__(self, lines):
+        '''Initialize #extend.
+
+        Note: extends 'lines' with content of the given filename.
+        '''
         from .block import Block
         fn = self._compile(lines)
         self._block = Block(lines, allowed=LINE_BLOCK | LINE_MACRO | LINE_COMMENT | LINE_INCLUDE | LINE_END)
@@ -23,6 +27,7 @@ class BlockExtend:
         return self._block.render(namespace)
 
     def _compile(self, lines):
+        '''Return the filename from the current line.'''
         m = self.RE_EXTEND.match(lines.current)
         if m is None:
             raise DefineBlockError('''Incorrect block definition at line {}, {}

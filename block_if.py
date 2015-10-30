@@ -13,6 +13,11 @@ class BlockIf:
     RE_IF = re.compile('^\s*#(if|elif)\s+@([{VAR_DOTS}]+)(\s*\(\s*(@[{VAR_DOTS}]+\s*(,\s*@[{VAR_DOTS}]+\s*)*)?\))?\s*:\s*$'.format(VAR_DOTS=VAR_DOTS), re.UNICODE)
 
     def __init__(self, lines):
+        '''Initialize #if.
+
+        Note: we both read the 'true' block and 'false' block and set the appropriate
+              render method to use a boolean or a function as if-statement.
+        '''
         from .block import Block
         self._compile(lines)
         self._block_true = Block(lines, allowed=ALWAYS_ALLOWED | LINE_ELIF | LINE_ELSE | LINE_END)
@@ -24,6 +29,7 @@ class BlockIf:
             self._block_false = None
 
     def _render_bool(self, namespace):
+        '''Render a 'true' or (if available) 'false' block based on a boolean.'''
         if namespace[self._evaluate]:
             return self._block_true.render(namespace)
         if self._block_false is not None:
@@ -31,6 +37,9 @@ class BlockIf:
         return None
 
     def _render_func(self, namespace):
+        '''Render a 'true' or (if available) 'false' block based on the result
+        of a function call.
+        '''
         if namespace[self._evaluate](*[namespace[arg] for arg in self._args]):
             return self._block_true.render(namespace)
         if self._block_false is not None:
@@ -38,6 +47,9 @@ class BlockIf:
         return None
 
     def _compile(self, lines):
+        '''Set the correct render method (boolean or function call)
+        and read variables from the current line.
+        '''
         m = self.RE_IF.match(lines.current)
         if m is None:
             raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))

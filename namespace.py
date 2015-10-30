@@ -40,6 +40,11 @@ class Namespace:
         return self.dictionary.keys()
 
     def copy(self):
+        '''Returns a copy of this namespace.
+
+        Note: we truly create a copy of the dictionary but keep
+              _macros and _blocks.
+        '''
         return Namespace(self.dictionary.copy(), self._macros, self._blocks)
 
     def get_macro_or_block(self, name):
@@ -63,6 +68,9 @@ class Namespace:
         self._blocks[name] = block
 
     def __str__(self):
+        '''Return a nice representation of the current namespace which
+        can be useful when debugging the render process.
+        '''
         return pprint.pformat({
             'namespace': self.dictionary,
             'macros': list(self._macros),

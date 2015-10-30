@@ -27,6 +27,16 @@ from .constants import (
 class Block:
 
     def __init__(self, lines, allowed):
+        '''Initialize a block
+        A block contains other 'blocks'
+
+        positional arguments:
+            lines: Lines object which is used to read template lines.
+            allowed: we do not allow any statement in each block. for
+                     example its not possible to use a #end if nothing
+                    is open. allowed is a integer representing the
+                    statements which are allowed in the current block.
+        '''
         self._blocks = []
         self._compile(lines, allowed)
 
@@ -90,6 +100,7 @@ class Block:
         self._reset_plain()
 
     def _reset_plain(self):
+        '''Create a BlockText from the captured lines and clear _text.'''
         if self._text:
             self._blocks.append(BlockText('\n'.join(self._text)))
         self._text.clear()

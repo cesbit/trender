@@ -96,6 +96,16 @@ TRender('@name!IsPerfect').render({
 # Output => "IrisIsPerfect"
 ```
 
+Comments
+--------
+Comments should start with `##` or a `#` followed by a `space`.
+
+Example:
+```
+# This is a comment
+##This is a comment too
+```
+
 Conditionals
 ------------
 Conditionals are very simple in TRender. We evaluate a simple value or allow a function for more complex conditionals.
@@ -199,13 +209,13 @@ Include
 Including files is only possible when using a template file as source. Includes happen at compile time so they have no extra costs during rendering. 
 
 Example:
-```
+```html
 # base.template
 <h1>Let include a file</h1>
 #include another.template
 <span>Yes, it worked!</span>
 ```
-```
+```html
 # another.template
 <span>Please, include me...</span>
 ```
@@ -224,7 +234,7 @@ Extend
 Extend can be used to extend a template. This is ofter useful when we want to use a `base` template but start rendering another specific template. It's only possible to use extend when using a template file as source.
 
 Example:
-```
+```html
 # base.template
 <html>
 <head>
@@ -235,7 +245,7 @@ Example:
 </body>
 </html>
 ```
-```
+```html
 # some.template
 #extend base.template:
 

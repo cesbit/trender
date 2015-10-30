@@ -270,8 +270,8 @@ TRender('some.template', '.').render()
 #    </html>
 ```
 		
-Usage TRender with aiohttp (web server)
----------------------------------------
+How to use TRender with aiohttp (web server)
+--------------------------------------------
 TRender can used together with the `aiohttp` web server by using simple decorators for loading and rendering templates. 
 
 Example:

@@ -157,13 +157,13 @@ TRender('''
 })
 
 # Output =>
-	Iris is 2 years old
-	Sasha is 30 years old
+#	Iris is 2 years old
+#	Sasha is 30 years old
 ```
 
 Blocks
 ------
-Sometimes you want to define a block an re-use this block several times.
+Sometimes you want to define a block an re-use this block several times. As a name convention I like to write blocks using CamelCase.
 
 Example:
 ```python
@@ -184,40 +184,81 @@ TRender('''
 })
 
 # Output =>
-    <ul>
-        <li>laptop</li>
-        <li>mouse</li>
-    </ul>
+#    <ul>
+#        <li>laptop</li>
+#        <li>mouse</li>
+#    </ul>
 ```
 
 Macros
 ------
-Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro.
+Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro. As a name convention I like to write blocks using UPPERCASE_CHARACTERS.
 
 Include
 -------
 Including files is only possible when using a template file as source. Includes happen at compile time so they have no extra costs during rendering. 
 
 Example:
-```python
+```
 # base.template
 <h1>Let include a file</h1>
 #include another.template
 <span>Yes, it worked!</span>
-
+```
+```
 # another.template
 <span>Please, include me...</span>
-
+```
+```python
 # Now compile and render the templates
 TRender('base.template', '.').render()
 
 # Output =>
-    <h1>Let include a file</h1>
-    <span>Please, include me...</span>
-    <span>Yes, it worked!</span>
-
-
+#    <h1>Let include a file</h1>
+#    <span>Please, include me...</span>
+#    <span>Yes, it worked!</span>
 ```
+
+Extend
+------
+Extend can be used to extend a template. This is ofter useful when we want to use a `base` template but start rendering another specific template. It's only possible to use extend when using a template file as source.
+
+Example:
+```
+# base.template
+<html>
+<head>
+<title>I'm a base template</title>
+</head>
+<body>
+#CONTENT
+</body>
+</html>
+```
+```
+# some.template
+#extend base.template:
+
+#macro CONTENT:
+<span>This is just some content...</span>
+#end <!-- End of CONTENT -->
+
+#end <!-- End of extend base.template -->
+```
+```python
+# Now compile and render the templates
+TRender('some.template', '.').render()
+
+# Output =>
+#    <html>
+#    <head>
+#    <title>I'm a base template</title>
+#    </head>
+#    <body>
+#    <span>This is just some content...</span>
+#    </body>
+#    </html>
+
 		
 Usage TRender with aiohttp (web server)
 ---------------------------------------

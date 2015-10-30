@@ -3,19 +3,19 @@ Template Render Engine
 
 Why TRender?
 ------------
-It's just another template render engine so why choose TRender?
-TRender is created for SiriDB which needed a very *fast*, *memory leak free* and *simple* template engine.
+It is just another template render engine so why should one choose TRender?
+TRender is created for SiriDB which needs a very *fast*, *memory leak free* and *simple* template engine.
 
 - *Fast*: 
 	TRender is able to render the SiriDB main page 1000x in 0.03 seconds.
 - *No Memory Leaks*: 
-	No circular references are created, this is important for some projects (like SiriDB) who 
+	No circular references are created, this is important for some projects (like SiriDB) which 
 	want to use Python with gc (garbage collection) disabled.
 - *Simple*:
  	Well, you have to decide for yourself if this is a good thing. TRender is 
- 	not very, very rich in it's capabilities but still can include and extend templates,
- 	has conditional statements, for loops and can use blocks and macros. The template
- 	language looks a bit like Quik (another template engine) but is somewhat different.
+ 	not extensivery rich in its capabilities but still can include and extend templates,
+ 	it has conditional statements for loops and can use blocks and macros. The template
+ 	language has some resemblance with Quik (another template engine) but is somewhat different.
  	 
 Quick usage
 -----------
@@ -31,7 +31,7 @@ print(output) # => Hello world!
 	
 Basics
 ------
-TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be compiled with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to compile extremly fast rendering a compiled template should be very fast.
+TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be compiled with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to compile extremely fast rendering a compiled template should be very fast.
 
 When using a filename we also need to specify a path, like: `
 ```python
@@ -46,14 +46,14 @@ Note that `path` should be the root path for your templates. Assume we have the 
 	/templates/components/
 			component.template
 			
-Then it's best to initialize TRender like `TRender('pages/base.template', '/templates')` so the engine will be
+Then it is best to initialize TRender like `TRender('pages/base.template', '/templates')` so the engine will be
 able to find `components/component.template` when used inside your template.
 
 Both `#extend` and `#include` are only available when using a template file, not with a simple string.
 
 Using variable
 --------------
-Variable in a template are prefixed with an `@` and optionally can be closed with a `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want a 'real' `@` in the template, add `!` as an escape character.
+Variable in a template is prefixed with an `@` and optionally can be closed with an `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want to use a `@` as a symbol in the template, add `!` as an escape character.
 
 Examples:
 ```python
@@ -173,7 +173,7 @@ TRender('''
 
 Blocks
 ------
-Sometimes you want to define a block an re-use this block several times. As a name convention I like to write blocks using CamelCase.
+Sometimes you want to define a block and re-use this block several times. As a name convention I like to write blocks using CamelCase.
 
 Example:
 ```python

@@ -1,8 +1,8 @@
 Template Render Engine
-----------------------
+======================
 
 Why TRender?
-============
+------------
 It's just another template render engine so why choose TRender?
 TRender is created for SiriDB which needed a very *fast*, *memory leak free* and *simple* template engine.
 
@@ -18,7 +18,7 @@ TRender is created for SiriDB which needed a very *fast*, *memory leak free* and
  	language looks a bit like Quik (another template engine) but is somewhat different.
  	 
 Quick usage
-===========
+-----------
 ```python
 from trender import TRender
 
@@ -30,7 +30,7 @@ print(output) # => Hello world!
 ```	
 	
 Basics
-======
+------
 TRender can use both a simple string as input or a filename. 
 
 When using a filename we also need to specify a path, like: `
@@ -52,7 +52,7 @@ able to find `components/component.template` when used inside your template.
 Both `#extend` and `#include` are only available when using a template file, not with a simple string.
 
 Using variable
-==============
+--------------
 Variable in a template are prefixed with an `@` and optionally can be closed with a `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want a 'real' `@` in the template, add `!` as an escape character.
 
 Examples:
@@ -97,7 +97,7 @@ TRender('@name!IsPerfect').render({
 ```
 
 Conditionals
-============
+------------
 Conditionals are very simple in TRender. We evaluate a simple value or allow a function for more complex conditionals.
 We start with `#if` followed by an optional `#elif` finally an optional `else` and close with `#end`. 
 If a conditional is not available in the namespace it will evaluate as `false`.
@@ -138,7 +138,7 @@ TRender('''
 ```
 
 Loops
-=====
+-----
 We use `#for` loops and the loop should always close with `#end`.
 
 Since an example explains more than words:
@@ -162,7 +162,7 @@ TRender('''
 ```
 		
 Usage TRender with aiohttp (web server)
-=======================================
+---------------------------------------
 TRender can used together with the `aiohttp` web server by using simple decorators for loading and rendering templates. 
 
 Example:

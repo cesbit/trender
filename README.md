@@ -3,7 +3,6 @@ Template Render Engine
 
 Why TRender?
 ============
-
 It's just another template render engine so why choose TRender?
 TRender is created for SiriDB which needed a very *fast*, *memory leak free* and *simple* template engine.
 
@@ -18,11 +17,8 @@ TRender is created for SiriDB which needed a very *fast*, *memory leak free* and
  	has conditional statements, for loops and can use blocks and macros. The template
  	language looks a bit like Quik (another template engine) but is somewhat different.
  	 
-
 Quick usage
 ===========
-
-
 ```python
 from trender import TRender
 
@@ -35,10 +31,13 @@ print(output) # => Hello world!
 	
 Basics
 ======
+TRender can use both a simple string as input or a filename. 
 
-TRender can use both a simple string as input or a filename. When using a filename we also need to
-specify a path, like: `TRender('base.template', path='path_to_file')`
- 
+When using a filename we also need to specify a path, like: `
+```python
+TRender('base.template', path='path_to_file')
+```
+
 Note that path should be the root path for your templates so assume we have the following path structure:
 
 	/templates/
@@ -52,15 +51,11 @@ able to find `components/component.template` when used inside your template.
 
 Both `#extend` and `#include` are only available when using a template file, not with a simple string.
 
-
 Using variable
 ==============
-
 Variable in a template are prefixed with an `@` and optionally can be closed with a `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want a 'real' `@` in the template, add `!` as an escape character.
 
-
 Examples:
-
 ```python
 # Just render a simple variable...
 
@@ -103,13 +98,11 @@ TRender('@name!IsPerfect').render({
 
 Conditionals
 ============
-
 Conditionals are very simple in TRender. We evaluate a simple value or allow a function for more complex conditionals.
 We start with `#if` followed by an optional `#elif` finally an optional `else` and close with `#end`. 
 If a conditional is not available in the namespace it will evaluate as `false`.
 
 Simple example:
-
 ```python
 TRender('''
 
@@ -127,7 +120,6 @@ TRender('''
 ```
 
 Complex example (actually it's not really complex...)
-
 ```python
 TRender('''
 
@@ -147,56 +139,54 @@ TRender('''
 
 Loops
 =====
-
 We use `#for` loops and the loop should always close with `#end`.
 
 Since an example explains more than words:
+```python
+TRender('''
 
-	TRender('''
-	
-	#for @person in @people:
-		@person.name is @person.age years old
-	#end
-	
-	''').render({
-		'people': [
-			{'name': 'Iris', 'age': 2},
-			{'name': 'Sasha', 'age': 30}
-		]
-	})
-	
-	# Output =>
-		Iris is 2 years old
-		Sasha is 30 years old
-	
+#for @person in @people:
+	@person.name is @person.age years old
+#end
+
+''').render({
+	'people': [
+		{'name': 'Iris', 'age': 2},
+		{'name': 'Sasha', 'age': 30}
+	]
+})
+
+# Output =>
+	Iris is 2 years old
+	Sasha is 30 years old
+```
 		
 Usage TRender with aiohttp (web server)
 =======================================
-
 TRender can used together with the `aiohttp` web server by using simple decorators for loading and rendering templates. 
 
 Example:
+```python
+from trender.aiohttp_template import setup_template_loader
+from trender.aiohttp_template import template
 
-	from trender.aiohttp_template import setup_template_loader
-	from trender.aiohttp_template import template
+# This will setup the template loader. Make sure you run this only once.
+
+setup_template_loader('/my_template_path')
+
+
+# The 'template' decorator can be used to load a template.
+# we assume in this example that you have the following template:
+#
+#   /my_template_path/base.template
+#
+# and you want to render this using the namespace:
+#
+#   {'name': 'Iris'}
+
+@template('base.template')
+async def myhandler(request):
+	return {'name': 'Iris'}
 	
-	# This will setup the template loader. Make sure you run this only once.
-	
-	setup_template_loader('/my_template_path')
-	
-	
-	# The 'template' decorator can be used to load a template.
-	# we assume in this example that you have the following template:
-	#
-	#   /my_template_path/base.template
-	#
-	# and you want to render this using the namespace:
-	#
-	#   {'name': 'Iris'}
-	
-	@template('base.template')
-	async def myhandler(request):
-		return {'name': 'Iris'}
-		
-	# Thats it!
-	
+# Thats it!
+```

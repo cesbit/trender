@@ -28,19 +28,9 @@ class BlockIf:
         else:
             self._block_false = None
 
-    def _render_bool(self, namespace):
+    def render(self, namespace):
         '''Render a 'true' or (if available) 'false' block based on a boolean.'''
-        if namespace[self._evaluate]:
-            return self._block_true.render(namespace)
-        if self._block_false is not None:
-            return self._block_false.render(namespace)
-        return None
-
-    def _render_func(self, namespace):
-        '''Render a 'true' or (if available) 'false' block based on the result
-        of a function call.
-        '''
-        if namespace[self._evaluate](*[namespace[arg] for arg in self._args]):
+        if (self._isbool and namespace[self._evaluate]) or (not self._isbool and namespace[self._evaluate](*[namespace[arg] for arg in self._args])):
             return self._block_true.render(namespace)
         if self._block_false is not None:
             return self._block_false.render(namespace)
@@ -55,9 +45,7 @@ class BlockIf:
             raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #if @foo:'.format(lines.pos, lines.current))
         args = m.group(3)
         self._evaluate = m.group(2).replace('.', '-')
-        if args is None:
-            self.render = self._render_bool
-        else:
+        self._isbool = args is None
+        if not self._isbool:
             args = args.strip('() \t')
             self._args = [arg.strip('@ \t').replace('.', '-') for arg in args.split(',')]
-            self.render = self._render_func

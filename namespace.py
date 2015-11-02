@@ -1,3 +1,8 @@
+'''TRender (Template Render Engine)
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import pprint
 from .exceptions import MacroOrBlockExistError
 from .exceptions import MacroOrBlockNotDefinedError

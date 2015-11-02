@@ -1,3 +1,8 @@
+'''TRender (Template Render Engine)
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 from .lines import Lines
 from .block import Block
 from .namespace import Namespace

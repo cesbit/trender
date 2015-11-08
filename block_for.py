@@ -10,7 +10,10 @@ from .constants import (
 
 class BlockFor:
 
-    RE_FOR = re.compile('^\s*#for\s+@([{VAR}]+)\s+in\s+@([{VAR_DOTS}]+)\s*:\s*$'.format(VAR=VAR, VAR_DOTS=VAR_DOTS), re.UNICODE)
+    RE_FOR = re.compile(
+        '^\s*#for\s+@([{VAR}]+)\s+in\s+@([{VAR_DOTS}]+)\s*:\s*$'
+        .format(VAR=VAR, VAR_DOTS=VAR_DOTS),
+        re.UNICODE)
 
     def __init__(self, lines):
         '''Initialize #for.'''
@@ -32,8 +35,12 @@ class BlockFor:
         return '\n'.join(result) if result else None
 
     def _compile(self, lines):
-        '''Return both variable names used in the #for loop in the current line.'''
+        '''Return both variable names used in the #for loop in the
+        current line.'''
         m = self.RE_FOR.match(lines.current)
         if m is None:
-            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #for @item in @items:'.format(lines.pos, lines.current))
+            raise DefineBlockError(
+                'Incorrect block definition at line {}, {}\nShould be '
+                'something like: #for @item in @items:'
+                .format(lines.pos, lines.current))
         return m.group(1), m.group(2).replace('.', '-')

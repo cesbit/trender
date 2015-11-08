@@ -25,5 +25,8 @@ class BlockMacro:
         '''Return the macro name from the current line.'''
         m = self.RE_MACRO.match(lines.current)
         if m is None:
-            raise DefineBlockError('Incorrect macro definition at line {}, {}\nShould be something like: #macro my_macro:'.format(lines.pos, lines.current))
+            raise DefineBlockError(
+                'Incorrect macro definition at line {}, {}\nShould be '
+                'something like: #macro my_macro:'
+                .format(lines.pos, lines.current))
         return m.group(1)

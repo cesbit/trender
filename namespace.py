@@ -57,19 +57,22 @@ class Namespace:
             return self._macros[name]
         if name in self._blocks:
             return self._blocks[name].render(self)
-        raise MacroOrBlockNotDefinedError('macro or block {} is not defined'.format(name))
+        raise MacroOrBlockNotDefinedError(
+            'macro or block {} is not defined'.format(name))
 
     def has_macro_or_block(self, name):
         return name in self._macros or name in self._blocks
 
     def add_macro(self, name, block):
         if self.has_macro_or_block(name):
-            raise MacroOrBlockExistError('macro or block {} already defined'.format(name))
+            raise MacroOrBlockExistError(
+                'macro or block {} already defined'.format(name))
         self._macros[name] = block.render(self)
 
     def add_block(self, name, block):
         if self.has_macro_or_block(name):
-            raise MacroOrBlockExistError('macro or block {} already defined'.format(name))
+            raise MacroOrBlockExistError(
+                'macro or block {} already defined'.format(name))
         self._blocks[name] = block
 
     def __str__(self):

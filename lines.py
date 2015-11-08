@@ -7,11 +7,14 @@ from .exceptions import DefineBlockError, TemplateNotExistsError
 class Lines:
 
     RE_BLOCK = re.compile('\s*#([a-zA-Z_]*)', re.UNICODE)
-    RE_INCLUDE = re.compile('^\s*#include\s+([{FILENAME}]+)\s*$'.format(FILENAME=FILENAME), re.UNICODE)
+    RE_INCLUDE = re.compile('^\s*#include\s+([{FILENAME}]+)\s*$'
+                            .format(FILENAME=FILENAME), re.UNICODE)
 
     def __init__(self, content_or_file, path=None):
         self._path = path
-        self._lines = content_or_file.splitlines() if path is None else self._read_template(content_or_file)
+        self._lines = content_or_file.splitlines() \
+            if path is None \
+            else self._read_template(content_or_file)
         self._gen_lines = self._reader()
 
     @property
@@ -31,11 +34,13 @@ class Lines:
     def _read_template(self, fn):
         if self._path is None:
             raise DefineBlockError('''Incorrect block definition at line {}, {}
-include/extend statements only work when starting with a file and path, not with string content'''.format(self.pos, self.current))
+include/extend statements only work when starting with a file and path,
+not with string content'''.format(self.pos, self.current))
 
         fn = os.path.join(self._path, fn)
         if not os.path.exists(fn):
-            raise TemplateNotExistsError('Cannot find template file: {}'.format(fn))
+            raise TemplateNotExistsError(
+                'Cannot find template file: {}'.format(fn))
 
         with open(fn, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -45,9 +50,11 @@ include/extend statements only work when starting with a file and path, not with
         m = self.RE_INCLUDE.match(self.current)
         if m is None:
             raise DefineBlockError('''Incorrect block definition at line {}, {}
-Should be something like: #include path/foo.html'''.format(self.pos, self.current))
+Should be something like: #include path/foo.html'''.format(
+                    self.pos, self.current))
 
-        self._lines = self._read_template(m.group(1)) + self._lines[self.pos + 1:]
+        self._lines = \
+            self._read_template(m.group(1)) + self._lines[self.pos + 1:]
         self._gen_lines = self._reader()
 
     def extend(self, fn):

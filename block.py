@@ -41,13 +41,18 @@ class Block:
         self._compile(lines, allowed)
 
     def render(self, namespace):
-        return '\n'.join([text for text in [block.render(namespace) for block in self._blocks] if text is not None])
+        return '\n'.join([text
+                          for text in [block.render(namespace)
+                                       for block in self._blocks]
+                          if text is not None])
 
     def _compile(self, lines, allowed):
         self._text = []
         while lines.next is not None:
             if not allowed & lines.current_type:
-                raise UnexpectedBlockError('Unexpected block at: {}, {}'.format(lines.pos, lines.current))
+                raise UnexpectedBlockError(
+                    'Unexpected block at: {}, {}'
+                    .format(lines.pos, lines.current))
 
             if lines.current_type == LINE_COMMENT:
                 continue
@@ -86,17 +91,22 @@ class Block:
                 self._blocks.append(BlockExtend(lines))
                 continue
 
-            if lines.current_type == LINE_END or lines.current_type == LINE_ELSE or lines.current_type == LINE_ELIF:
+            if lines.current_type == LINE_END or \
+                    lines.current_type == LINE_ELSE or \
+                    lines.current_type == LINE_ELIF:
                 break
 
             if lines.current_type == LINE_TEXT:
                 self._text.append(lines.current)
                 continue
 
-            raise RuntimeError('Damm, we should not get here. Current line:', lines.current)
+            raise RuntimeError(
+                'Damm, we should not get here. Current line:',
+                lines.current)
         else:
             if not allowed & EOF_TEXT:
-                raise UnexpectedEOFError('Unexpected end of file, missing #end')
+                raise UnexpectedEOFError(
+                    'Unexpected end of file, missing #end')
         self._reset_plain()
 
     def _reset_plain(self):

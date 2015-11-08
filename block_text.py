@@ -4,7 +4,8 @@ from .constants import VAR_DOTS
 
 class BlockText:
 
-    RE_VAR = re.compile('@([{VAR_DOTS}]+)(!?)'.format(VAR_DOTS=VAR_DOTS), re.UNICODE)
+    RE_VAR = re.compile('@([{VAR_DOTS}]+)(!?)'.format(VAR_DOTS=VAR_DOTS),
+                        re.UNICODE)
 
     def __init__(self, text):
         '''Initialize template line (or lines).'''
@@ -17,10 +18,12 @@ class BlockText:
         Note: we only need to parse the namespace if we used variables in
               this part of the template.
         '''
-        return self._text.format_map(namespace.dictionary) if self._need_format else self._text
+        return self._text.format_map(namespace.dictionary) \
+            if self._need_format else self._text
 
     def _compile(self, text):
-        # replace curly braces wit double curly so the will be escaped when using format.
+        # replace curly braces wit double curly so the will be
+        # escaped when using format.
         text = text.replace('{', '{{').replace('}', '}}')
 
         # when variable are found we will also set _need_format to True
@@ -35,8 +38,7 @@ class BlockText:
         return text
 
     def _set_vars(self, m):
-        '''Set _need_format to True and return the variable wrapped in curly braces so
-        it can be formatted.
-        '''
+        '''Set _need_format to True and return the variable wrapped in curly
+        braces so it can be formatted.'''
         self._need_format = True
         return '{' + m.group(1).replace('.', '-') + '}'

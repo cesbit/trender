@@ -1,7 +1,8 @@
 '''TRender (Template Render Engine)
 
 This implementation is based on aiohttp_jinja2, see:
-http://aiohttp-jinja2.readthedocs.org/en/stable/ and https://github.com/aio-libs/aiohttp_jinja2
+http://aiohttp-jinja2.readthedocs.org/en/stable/ and
+https://github.com/aio-libs/aiohttp_jinja2
 
 :copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
 '''

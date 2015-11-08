@@ -25,5 +25,8 @@ class BlockBlock:
         '''Read the block name from the current line.'''
         m = self.RE_BLOCK.match(lines.current)
         if m is None:
-            raise DefineBlockError('Incorrect block definition at line {}, {}\nShould be something like: #block my_block:'.format(lines.pos, lines.current))
+            raise DefineBlockError(
+                'Incorrect block definition at line {}, {}\nShould be '
+                'something like: #block my_block:'
+                .format(lines.pos, lines.current))
         return m.group(1)

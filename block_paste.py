@@ -23,5 +23,7 @@ class BlockPaste:
         '''Return macro or block name from the current line.'''
         m = self.RE_PASTE.match(lines.current)
         if m is None:
-            raise MacroBlockUsageError('Incorrect macro or block usage at line {}, {}\nShould be something like: #my_macro'.format(lines.pos, lines.current))
+            raise MacroBlockUsageError(
+                'Incorrect macro or block usage at line {}, {}\nShould be '
+                'something like: #my_macro'.format(lines.pos, lines.current))
         return m.group(1)

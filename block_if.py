@@ -11,7 +11,7 @@ from .constants import (
 class BlockIf:
 
     RE_IF = re.compile(
-        '^\s*#(if|elif)\s+@([{VAR_DOTS}]+)(\s*\(\s*(@[{VAR_DOTS}]+\s*(,\s*' +
+        '^\s*#(if|elif)\s+@([{VAR_DOTS}]+)(\s*\(\s*(@[{VAR_DOTS}]+\s*(,\s*'
         '@[{VAR_DOTS}]+\s*)*)?\))?\s*:\s*$'
         .format(VAR_DOTS=VAR_DOTS),
         re.UNICODE)

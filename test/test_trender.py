@@ -1,5 +1,6 @@
 import unittest
 import gc
+import os
 import time
 from trender import TRender
 from trender import (
@@ -12,7 +13,9 @@ from trender import (
     MacroBlockUsageError)
 
 
-TEMPLATES_PATH = 'templates'
+TEMPLATES_PATH = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)),
+    'templates')
 
 
 class TestTRender(unittest.TestCase):
@@ -210,7 +213,7 @@ test include
                 {'name': 'Sasha'}]}
         compiled = TRender(template)
         start = time.time()
-        for _ in range(10000):
+        for _ in range(10 ** 4):
             compiled.render(namespace)
         finished = time.time() - start
         self.assertLess(finished, 0.5)

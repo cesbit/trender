@@ -20,6 +20,7 @@ from .constants import (
     LINE_COMMENT,
     LINE_INCLUDE,
     LINE_EXTEND,
+    LINE_EMPTY,
     EOF_TEXT
 )
 
@@ -50,6 +51,8 @@ class Block:
         self._text = []
         while lines.next is not None:
             if not allowed & lines.current_type:
+                if lines.current_type == LINE_EMPTY:
+                    continue
                 raise UnexpectedBlockError(
                     'Unexpected block at: {}, {}'
                     .format(lines.pos, lines.current))
@@ -96,7 +99,8 @@ class Block:
                     lines.current_type == LINE_ELIF:
                 break
 
-            if lines.current_type == LINE_TEXT:
+            if lines.current_type == LINE_TEXT or \
+                    lines.current_type == LINE_EMPTY:
                 self._text.append(lines.current)
                 continue
 

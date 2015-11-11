@@ -71,4 +71,6 @@ Should be something like: #include path/foo.html'''.format(
     @classmethod
     def _get_current_type(cls, line):
         m = cls.RE_BLOCK.match(line)
-        return MAP_LINE_TYPE.get(m.group(1) if m else None, LINE_PASTE)
+        return MAP_LINE_TYPE.get(m.group(1)
+                                 if m else (True
+                                 if line.strip() else None), LINE_PASTE)

@@ -1,0 +1,9 @@
+#
+# Test include
+#
+# Warning: Do not edit this template because its used for unit-testing
+#
+
+<body>
+#include include.template
+</body>

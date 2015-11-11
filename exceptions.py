@@ -30,10 +30,6 @@ class MacroBlockUsageError(CompileException):
     pass
 
 
-class EvaluateError(RenderException):
-    pass
-
-
 class MacroOrBlockExistError(RenderException):
     pass
 

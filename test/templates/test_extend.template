@@ -1,0 +1,12 @@
+#
+# Test extend
+#
+# Warning: Do not edit this template because its used for unit-testing
+#
+#extend base.template:
+
+#macro Content:
+test extend
+#end
+
+#end

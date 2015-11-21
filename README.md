@@ -31,7 +31,7 @@ print(output) # => Hello world!
 	
 Basics
 ------
-TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be rendered with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to **compile** extremely fast but rendering a compiled template should be very fast.
+TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be rendered with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is optimized to render a compiled template very fast.
 
 When using a filename we also need to specify a path, like: `
 ```python

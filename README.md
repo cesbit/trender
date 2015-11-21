@@ -53,7 +53,7 @@ Both `#extend` and `#include` are only available when using a template file, not
 
 Using variable
 --------------
-Variable in a template is prefixed with an `@` and optionally can be closed with an `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want to use a `@` as a symbol in the template, add `!` as an escape character.
+Variable in a template are prefixed with an `@` and optionally can be closed with an `!` exclamation mark. A variable can only include alphabetic characters, digits and underscores. (And a `.`, but this has a special meaning to select nested variable). If you want to use a `@` as a symbol in the template, add `!` as an escape character.
 
 Examples:
 ```python

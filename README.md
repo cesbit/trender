@@ -109,7 +109,7 @@ Example:
 Conditionals
 ------------
 Conditionals are very simple in TRender. We evaluate a simple value or allow a function for more complex conditionals.
-We start with `#if` followed by an optional `#elif` finally an optional `else` and close with `#end`. 
+We start with `#if` followed by an optional `#elif` finally an optional `#else` and close with `#end`. 
 If a conditional is not available in the namespace it will evaluate as `false`.
 
 Simple example:

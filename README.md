@@ -14,7 +14,7 @@ TRender is created for SiriDB which needs a very *fast*, *memory leak free* and 
 - *Simple*:
  	Well, you have to decide for yourself if this is a good thing. TRender is 
  	not extensivery rich in its capabilities but still can include and extend templates,
- 	it has conditional statements for loops and can use blocks and macros. The template
+ 	it has conditional statements, for loops and can use blocks and macros. The template
  	language has some resemblance with Quik (another template engine) but is somewhat different.
  	 
 Quick usage
@@ -31,7 +31,7 @@ print(output) # => Hello world!
 	
 Basics
 ------
-TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be compiled with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to compile extremely fast rendering a compiled template should be very fast.
+TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be rendered with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is not optimized to **compile** extremely fast but rendering a compiled template should be very fast.
 
 When using a filename we also need to specify a path, like: `
 ```python

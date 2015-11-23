@@ -1,3 +1,8 @@
+'''BlockText, used to parse text with variable etc.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import re
 from .constants import VAR_DOTS
 

@@ -1,3 +1,8 @@
+'''Block, the work horse for TRender.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 from .block_text import BlockText
 from .block_if import BlockIf
 from .block_for import BlockFor

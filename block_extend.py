@@ -1,3 +1,8 @@
+'''BlockExtend, extend template using another base template.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import re
 from .exceptions import DefineBlockError
 from .constants import (

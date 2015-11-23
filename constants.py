@@ -1,3 +1,9 @@
+'''Constants used by TRender.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
+
 LINE_IF = 1
 LINE_ELSE = 2
 LINE_ELIF = 4

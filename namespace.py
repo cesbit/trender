@@ -1,4 +1,4 @@
-'''TRender (Template Render Engine)
+'''Namespace object.
 
 :copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
 '''

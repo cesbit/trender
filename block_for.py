@@ -1,3 +1,8 @@
+'''BlockFor, create a for loop.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import re
 from .exceptions import DefineBlockError
 from .constants import (

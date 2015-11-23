@@ -1,3 +1,8 @@
+'''BlockPaste, use a macro or block.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import re
 from .exceptions import MacroBlockUsageError
 from .constants import VAR

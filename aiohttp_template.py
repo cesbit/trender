@@ -1,4 +1,4 @@
-'''TRender (Template Render Engine)
+'''Use TRender with aiohttp.
 
 This implementation is based on aiohttp_jinja2, see:
 http://aiohttp-jinja2.readthedocs.org/en/stable/ and

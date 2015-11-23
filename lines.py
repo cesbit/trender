@@ -1,3 +1,8 @@
+'''Lines Class which is responsible for reading lines.
+
+:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+'''
+
 import re
 import os
 from .constants import MAP_LINE_TYPE, LINE_PASTE, FILENAME

@@ -48,4 +48,4 @@ MAP_LINE_TYPE = {
 
 VAR = 'a-zA-Z0-9_'
 VAR_DOTS = VAR + '\.'
-FILENAME = 'a-zA-Z0-9_\./'
+FILENAME = 'a-zA-Z0-9_\-\./'

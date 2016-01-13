@@ -96,6 +96,8 @@ class TestTRender(unittest.TestCase):
     def test_comments(self):
         template = '''
         # This is comment
+        #
+        # Above is an empty comment, let's check if we see that as a comment
         This is not
         ## This is comment too'''
         expecting = '''

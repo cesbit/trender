@@ -52,7 +52,7 @@ not with string content'''.format(self.pos, self.current))
         return content.splitlines()
 
     def include(self):
-        m = self.RE_INCLUDE.match(self.current)
+        m = self.__class__.RE_INCLUDE.match(self.current)
         if m is None:
             raise DefineBlockError('''Incorrect block definition at line {}, {}
 Should be something like: #include path/foo.html'''.format(

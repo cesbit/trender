@@ -61,7 +61,7 @@ class BlockIf:
         '''Set the correct render method (boolean or function call)
         and read variables from the current line.
         '''
-        m = self.RE_IF.match(lines.current)
+        m = self.__class__.RE_IF.match(lines.current)
         if m is None:
             raise DefineBlockError(
                 'Incorrect block definition at line {}, {}\nShould be '

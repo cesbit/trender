@@ -26,9 +26,10 @@ class BlockMacro:
         namespace.add_macro(self._name, self._block)
         return None
 
-    def _compile(self, lines):
+    @classmethod
+    def _compile(cls, lines):
         '''Return the macro name from the current line.'''
-        m = self.RE_MACRO.match(lines.current)
+        m = cls.RE_MACRO.match(lines.current)
         if m is None:
             raise DefineBlockError(
                 'Incorrect macro definition at line {}, {}\nShould be '

@@ -39,10 +39,11 @@ class BlockFor:
             result.append(self._block.render(ns))
         return '\n'.join(result) if result else None
 
-    def _compile(self, lines):
+    @classmethod
+    def _compile(cls, lines):
         '''Return both variable names used in the #for loop in the
         current line.'''
-        m = self.RE_FOR.match(lines.current)
+        m = cls.RE_FOR.match(lines.current)
         if m is None:
             raise DefineBlockError(
                 'Incorrect block definition at line {}, {}\nShould be '

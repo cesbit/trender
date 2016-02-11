@@ -38,9 +38,10 @@ class BlockExtend:
     def render(self, namespace):
         return self._block.render(namespace)
 
-    def _compile(self, lines):
+    @classmethod
+    def _compile(cls, lines):
         '''Return the filename from the current line.'''
-        m = self.RE_EXTEND.match(lines.current)
+        m = cls.RE_EXTEND.match(lines.current)
         if m is None:
             raise DefineBlockError('''Incorrect block definition at line {}, {}
 Should be something like: #extend path/foo.html:'''.format(

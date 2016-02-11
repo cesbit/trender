@@ -24,9 +24,10 @@ class BlockPaste:
         '''
         return namespace.get_macro_or_block(self._name)
 
-    def _compile(self, lines):
+    @classmethod
+    def _compile(cls, lines):
         '''Return macro or block name from the current line.'''
-        m = self.RE_PASTE.match(lines.current)
+        m = cls.RE_PASTE.match(lines.current)
         if m is None:
             raise MacroBlockUsageError(
                 'Incorrect macro or block usage at line {}, {}\nShould be '

@@ -32,7 +32,7 @@ class BlockText:
         text = text.replace('{', '{{').replace('}', '}}')
 
         # when variable are found we will also set _need_format to True
-        text = self.RE_VAR.sub(self._set_vars, text)
+        text = self.__class__.RE_VAR.sub(self._set_vars, text)
 
         # replace escaped @! characters with just @
         text = text.replace('@!', '@')

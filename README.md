@@ -4,7 +4,7 @@ Template Render Engine
 Why TRender?
 ------------
 It is just another template render engine so why should one choose TRender?
-TRender is created for SiriDB which needs a very *fast*, *memory leak free* and *simple* template engine.
+TRender is created for SiriDB which needs a *fast*, *memory leak free* and *simple* template engine.
 
 - *Fast*: 
 	TRender is able to render the SiriDB main page 1000x in 0.03 seconds.
@@ -16,6 +16,12 @@ TRender is created for SiriDB which needs a very *fast*, *memory leak free* and 
  	not extensivery rich in its capabilities but still can include and extend templates,
  	it has conditional statements, for loops and can use blocks and macros. The template
  	language has some resemblance with Quik (another template engine) but is somewhat different.
+
+Installation
+------------
+The easiest way is to use PyPI:
+
+    sudo pip3 install trender
  	 
 Quick usage
 -----------

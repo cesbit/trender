@@ -217,7 +217,7 @@ Including files is only possible when using a template file as source. Includes 
 Example:
 ```html
 # base.template
-<h1>Let include a file</h1>
+<h1>Let's include a file</h1>
 #include another.template
 <span>Yes, it worked!</span>
 ```
@@ -230,7 +230,7 @@ Example:
 TRender('base.template', '.').render()
 
 # Output =>
-#    <h1>Let include a file</h1>
+#    <h1>Let's include a file</h1>
 #    <span>Please, include me...</span>
 #    <span>Yes, it worked!</span>
 ```

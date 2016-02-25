@@ -6,7 +6,7 @@ https://github.com/aio-libs/aiohttp_jinja2
 
 :copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
 '''
-
+import asyncio
 from aiohttp import web
 from .trender import TRender
 
@@ -19,7 +19,8 @@ def template(template_name):
 
     def wrapper(func):
 
-        async def wrapped(self, request):
+        @asyncio.coroutine
+        def wrapped(self, request):
             namespace = await func(self, request)
             text = _templates[template_name].render(namespace)
             return web.Response(body=text.encode('utf-8'))

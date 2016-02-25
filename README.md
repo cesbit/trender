@@ -208,7 +208,7 @@ TRender('''
 
 Macros
 ------
-Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro. As a name convention I like to write blocks using UPPERCASE_CHARACTERS.
+Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro. As a name convention I like to write macros using UPPERCASE_CHARACTERS.
 
 Include
 -------
@@ -217,7 +217,7 @@ Including files is only possible when using a template file as source. Includes 
 Example:
 ```html
 # base.template
-<h1>Let include a file</h1>
+<h1>Let's include a file</h1>
 #include another.template
 <span>Yes, it worked!</span>
 ```
@@ -230,7 +230,7 @@ Example:
 TRender('base.template', '.').render()
 
 # Output =>
-#    <h1>Let include a file</h1>
+#    <h1>Let's include a file</h1>
 #    <span>Please, include me...</span>
 #    <span>Yes, it worked!</span>
 ```

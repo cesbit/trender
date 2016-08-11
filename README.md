@@ -130,7 +130,7 @@ TRender('''
 	I'm not perfect..
 #end
 
-''').render({'almost_perfect': true}) 
+''').render({'almost_perfect': True})
 
 # Output => "I'm almost perfect"
 ```

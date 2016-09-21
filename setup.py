@@ -2,7 +2,7 @@
 #  Got documentation from: http://peterdowns.com/posts/first-time-with-pypi.html
 #
 #   1. Create tag:
-#       git tag 1.0.3 -m "Adds a tag so that we can put this new version on PyPI."
+#       git tag 1.0.4 -m "Adds a tag so that we can put this new version on PyPI."
 #
 #   2. Push tag:
 #       git push --tags origin master
@@ -20,12 +20,12 @@ from distutils.core import setup
 setup(
     name='trender',
     packages=['trender'],
-    version='1.0.3',
+    version='1.0.4',
     description='Template Render Engine written in pure Python',
     author='Jeroen van der Heijden',
     author_email='jeroen@transceptor.technology',
     url='https://github.com/transceptor-technology/trender',
-    download_url='https://github.com/transceptor-technology/trender/tarball/1.0.3',
+    download_url='https://github.com/transceptor-technology/trender/tarball/1.0.4',
     keywords=['template', 'engine', 'render'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

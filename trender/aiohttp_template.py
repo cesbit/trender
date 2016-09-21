@@ -19,8 +19,8 @@ def template(template_name):
 
     def wrapper(func):
 
-        async def wrapped(self, request):
-            namespace = await func(self, request)
+        async def wrapped(*args):
+            namespace = await func(*args)
             text = _templates[template_name].render(namespace)
             return web.Response(body=text.encode('utf-8'))
         return wrapped

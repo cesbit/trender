@@ -285,10 +285,6 @@ Example:
 from trender.aiohttp_template import setup_template_loader
 from trender.aiohttp_template import template
 
-# This will setup the template loader. Make sure you run this only once.
-setup_template_loader('/my_template_path')
-
-
 # The 'template' decorator can be used to load a template.
 # we assume in this example that you have the following template:
 #
@@ -301,6 +297,11 @@ setup_template_loader('/my_template_path')
 @template('base.template')
 async def myhandler(request):
 	return {'name': 'Iris'}
+
+# This will setup the template loader. Make sure you run this only once, 
+# after template decorators are initialized.
+setup_template_loader('/my_template_path')
+
 	
 # Thats it!
 ```

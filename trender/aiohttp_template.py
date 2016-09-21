@@ -27,12 +27,13 @@ def template(template_name, **kwargs):
     rtemplate = _templates[template_name] = _Template(template_name, **kwargs)
 
     def wrapper(func):
-
         async def wrapped(*args):
             namespace = await func(*args)
             text = rtemplate.ctemplate.render(namespace)
             return web.Response(body=text.encode('utf-8'), **rtemplate.kwargs)
+
         return wrapped
+
     return wrapper
 
 

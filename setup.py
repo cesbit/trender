@@ -1,34 +1,18 @@
-#
-#  Got documentation from: http://peterdowns.com/posts/first-time-with-pypi.html
-#
-#   0. Update __init__.py
-#       changelog + version
-#
-#   1. Create tag:
-#       git tag 1.0.7 -m "Adds a tag so that we can put this new version on PyPI."
-#
-#   2. Push tag:
-#       git push --tags origin master
-#
-#   3. Upload your package to PyPI Test:
-#       python setup.py register -r pypitest
-#       python setup.py sdist upload -r pypitest
-#
-#   4. Upload to PyPI Live
-#       python setup.py register -r pypi
-#       python setup.py sdist upload -r pypi
-#
-
 from distutils.core import setup
+
+VERSION = '1.0.7'
+
 setup(
     name='trender',
     packages=['trender'],
-    version='1.0.7',
+    version=VERSION,
     description='Template Render Engine written in pure Python',
     author='Jeroen van der Heijden',
     author_email='jeroen@transceptor.technology',
     url='https://github.com/transceptor-technology/trender',
-    download_url='https://github.com/transceptor-technology/trender/tarball/1.0.7',
+    download_url=
+        'https://github.com/transceptor-technology/'
+        'trender/tarball/{}'.format(VERSION),
     keywords=['template', 'engine', 'render'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

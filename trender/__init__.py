@@ -1,13 +1,7 @@
 '''TRender - Python template parser.
 
-Changelog
-
-Version 1.0.7
-    - Fixed correct version number
-
-Version 1.0.6
-    - Fixed bug in aiohttp template decorator (see github issue #2)
-
+:copyright: 2016, Jeroen van der Heijden (Transceptor Technology)
+:license: MIT
 '''
 
 from .trender import TRender

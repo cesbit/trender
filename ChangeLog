@@ -1,0 +1,7 @@
+2016.09.30, Version 1.1.2 (Stable)
+
+    - Fixed correct version number
+
+2016.09.22, Version 1.0.6 (Stable)
+
+    - Fixed bug in aiohttp template decorator (see github issue #2)

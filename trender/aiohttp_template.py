@@ -10,10 +10,11 @@ https://github.com/aio-libs/aiohttp_jinja2
 from aiohttp import web
 from .trender import TRender
 
-_templates = {}
+_templates = []
 
 class _Template:
-    def __init__(self, template_name, **kwargs):
+    def __init__(self, name, **kwargs):
+        self.name = name
         self.ctemplate = None
         self.kwargs = {
             'content_type': 'text/html',
@@ -24,7 +25,8 @@ class _Template:
 
 def template(template_name, **kwargs):
     # register this template name
-    rtemplate = _templates[template_name] = _Template(template_name, **kwargs)
+    rtemplate = _Template(template_name, **kwargs)
+    _templates.append(rtemplate)
 
     def wrapper(func):
         async def wrapped(*args):
@@ -38,7 +40,7 @@ def template(template_name, **kwargs):
 
 
 def setup_template_loader(template_path):
-    for template_name in _templates:
-        _templates[template_name].ctemplate = TRender(
-            template_name,
+    for template in _templates:
+        template.ctemplate = TRender(
+            template.name,
             path=template_path)

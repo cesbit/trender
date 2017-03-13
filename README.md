@@ -62,10 +62,10 @@ Examples:
 ```python
 # Just render a simple variable...
 
-TRender('@name is perfect').render({
+TRender('@name is sweet').render({
 	'name': 'Iris'
 }) 
-# Output => "Iris is perfect"
+# Output => "Iris is sweet"
 ```
 
 ```python
@@ -84,19 +84,19 @@ TRender('@name@!@domain').render({
 TRender('@person.name is @person.age years old').render({
 	'person': {
 		'name': 'Iris', 
-		'age': 2
+		'age': 4
 	}
 })
-# Output => "Iris is 2 years old"
+# Output => "Iris is 4 years old"
 ```
 
 ```python
 # Close variable when needed...
 
-TRender('@name!IsPerfect').render({
+TRender('@name!IsSweet').render({
 	'name': 'Iris'
 })
-# Output => "IrisIsPerfect"
+# Output => "IrisIsSweet"
 ```
 
 Comments
@@ -119,17 +119,17 @@ Simple example:
 ```python
 TRender('''
 
-#if @perfect:
-	I'm perfect
-#elif @almost_perfect:
-	I'm almost perfect
+#if @sweet:
+	I'm sweet
+#elif @nice:
+	I'm nice
 #else:
-	I'm not perfect..
+	Don't know..
 #end
 
-''').render({'almost_perfect': True})
+''').render({'nice': True})
 
-# Output => "I'm almost perfect"
+# Output => "I'm nice"
 ```
 
 Complex example (actually it's not really complex...)
@@ -164,14 +164,14 @@ TRender('''
 
 ''').render({
 	'people': [
-		{'name': 'Iris', 'age': 2},
-		{'name': 'Sasha', 'age': 30}
+		{'name': 'Iris', 'age': 4},
+		{'name': 'Sasha', 'age': 32}
 	]
 })
 
 # Output =>
-#	Iris is 2 years old
-#	Sasha is 30 years old
+#	Iris is 4 years old
+#	Sasha is 32 years old
 ```
 
 Blocks

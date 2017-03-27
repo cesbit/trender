@@ -4,10 +4,10 @@ Template Render Engine
 Why TRender?
 ------------
 It is just another template render engine so why should one choose TRender?
-TRender was originally created for SiriDB which needed a *fast* and *simple* template engine.
+TRender was originally created for [SiriDB](http://siridb.net) which needed a *fast* and *simple* template engine.
 
 - *Fast*: 
-	TRender is able to render the SiriDB main page 1000x in 0.03 seconds.
+	TRender is able to render the [SiriDB](http://siridb.net) main page 1000x in 0.03 seconds.
 - *Simple*:
  	Well, you have to decide for yourself if this is a good thing. TRender is 
  	not extensivery rich in its capabilities but still can include and extend templates,

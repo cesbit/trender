@@ -293,7 +293,7 @@ from trender.aiohttp_template import template
 
 @template('base.template')
 async def myhandler(request):
-	return {'name': 'Iris'}
+    return {'name': 'Iris'}
 
 # This will setup the template loader. Make sure you run this only once, 
 # after template decorators are initialized.

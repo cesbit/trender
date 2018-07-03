@@ -187,7 +187,7 @@ TRender('''
 #end
 
 <ul>
-#for @item in @items.black:
+#for @item in @items:
     #Item
 #end
 </ul>
@@ -205,7 +205,7 @@ TRender('''
 
 Macros
 ------
-Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not avaible when defining the macro. As a name convention I like to write macros using UPPERCASE_CHARACTERS.
+Macros are like blocks, except that they will be compiled only once using the namespace where the macro is defined. For example if we had used a `macro` in the `block` example above, we would get two empty `<li></li>` items since `@item` was not available when defining the macro. As a name convention I like to write macros using UPPERCASE_CHARACTERS.
 
 Include
 -------

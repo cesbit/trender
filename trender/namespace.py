@@ -1,6 +1,6 @@
 '''Namespace object.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import pprint

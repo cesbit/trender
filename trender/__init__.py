@@ -1,6 +1,6 @@
 '''TRender - Python template parser.
 
-:copyright: 2017, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2022, Jeroen van der Heijden (Cesbit)
 :license: MIT
 '''
 
@@ -19,5 +19,5 @@ from .exceptions import (
 
 __author__ = 'Jeroen van der Heijden'
 __maintainer__ = 'Jeroen van der Heijden'
-__email__ = 'jeroen@transceptor.technology'
+__email__ = 'jeroen@cesbit.com'
 __version__ = '1.0.8'

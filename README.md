@@ -3,23 +3,14 @@ Template Render Engine
 
 Why TRender?
 ------------
-It is just another template render engine so why should one choose TRender?
-TRender was originally created for [SiriDB](http://siridb.net) which needed a *fast* and *simple* template engine.
-
-- *Fast*: 
-	TRender is able to render the [SiriDB](http://siridb.net) main page 1000x in 0.03 seconds.
-- *Simple*:
- 	Well, you have to decide for yourself if this is a good thing. TRender is 
- 	not extensivery rich in its capabilities but still can include and extend templates,
- 	it has conditional statements, for loops and can use blocks and macros. The template
- 	language has some resemblance with Quik (another template engine) but is somewhat different.
+It is just another template render engine.
 
 Installation
 ------------
 The easiest way is to use PyPI:
 
     sudo pip3 install trender
- 	 
+
 Quick usage
 -----------
 ```python
@@ -29,9 +20,9 @@ template = '@greet world!'
 compiled = TRender(template)
 output = compiled.render({'greet': 'Hello'})
 
-print(output) # => Hello world! 
-```	
-	
+print(output) # => Hello world!
+```
+
 Basics
 ------
 TRender uses a template as input. This template can be a string or filename. Some options like `include` and `extend` are only available when using a filename and template path. When initializing an instance of TRender it will compile the given template. Usually this will happen only once for each template. The TRender instance can then be rendered with a dictionary (we call this a namespace and we actually create a 'Namespace' instance from the given dictionary). TRender is optimized to render a compiled template very fast.
@@ -48,7 +39,7 @@ Note that `path` should be the root path for your templates. Assume we have the 
 			base.template
 	/templates/components/
 			component.template
-			
+
 Then it is best to initialize TRender like `TRender('pages/base.template', '/templates')` so the engine will be
 able to find `components/component.template` when used inside your template.
 
@@ -64,15 +55,15 @@ Examples:
 
 TRender('@name is sweet').render({
 	'name': 'Iris'
-}) 
+})
 # Output => "Iris is sweet"
 ```
 
 ```python
 # Escape @ to render an email address...
-	
+
 TRender('@name@!@domain').render({
-	'name': 'iris', 
+	'name': 'iris',
 	'domain': 'home.nl'
 })
 # Output => "iris@home.nl"
@@ -83,7 +74,7 @@ TRender('@name@!@domain').render({
 
 TRender('@person.name is @person.age years old').render({
 	'person': {
-		'name': 'Iris', 
+		'name': 'Iris',
 		'age': 4
 	}
 })
@@ -112,7 +103,7 @@ Example:
 Conditionals
 ------------
 Conditionals are very simple in TRender. We evaluate a simple value or allow a function for more complex conditionals.
-We start with `#if` followed by an optional `#elif` finally an optional `#else` and close with `#end`. 
+We start with `#if` followed by an optional `#elif` finally an optional `#else` and close with `#end`.
 If a conditional is not available in the namespace it will evaluate as `false`.
 
 Simple example:
@@ -209,7 +200,7 @@ Macros are like blocks, except that they will be compiled only once using the na
 
 Include
 -------
-Including files is only possible when using a template file as source. Includes happen at compile time so they have no extra costs during rendering. 
+Including files is only possible when using a template file as source. Includes happen at compile time so they have no extra costs during rendering.
 
 Example:
 ```html
@@ -272,10 +263,10 @@ TRender('some.template', '.').render()
 #    </body>
 #    </html>
 ```
-		
+
 How to use TRender with aiohttp (web server)
 --------------------------------------------
-TRender can used together with the `aiohttp` web server by using simple decorators for loading and rendering templates. 
+TRender can used together with the `aiohttp` web server by using simple decorators for loading and rendering templates.
 
 Example:
 ```python
@@ -295,10 +286,10 @@ from trender.aiohttp_template import template
 async def myhandler(request):
     return {'name': 'Iris'}
 
-# This will setup the template loader. Make sure you run this only once, 
+# This will setup the template loader. Make sure you run this only once,
 # after template decorators are initialized.
 setup_template_loader('/my_template_path')
 
-	
+
 # Thats it!
 ```

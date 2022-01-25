@@ -1,6 +1,6 @@
 '''BlockMacro, define a macro.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -10,7 +10,7 @@ from .constants import ALWAYS_ALLOWED, LINE_END
 
 class BlockMacro:
 
-    RE_MACRO = re.compile('^\s*#macro\s+([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
+    RE_MACRO = re.compile(r'^\s*#macro\s+([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
 
     def __init__(self, lines):
         '''Initialize #macro.'''

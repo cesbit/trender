@@ -1,6 +1,14 @@
+"""setup.py
+
+Upload to PyPI, Thx to: http://peterdowns.com/posts/first-time-with-pypi.html
+
+python setup.py sdist
+twine upload --repository pypitest dist/trender-x.x.x.tar.gz
+twine upload --repository pypi dist/trender-x.x.x.tar.gz
+"""
 from distutils.core import setup
 
-VERSION = '1.0.8'
+VERSION = '1.0.9'
 
 setup(
     name='trender',
@@ -8,11 +16,10 @@ setup(
     version=VERSION,
     description='Template Render Engine written in pure Python',
     author='Jeroen van der Heijden',
-    author_email='jeroen@transceptor.technology',
+    author_email='jeroen@cesbit.com',
     url='https://github.com/transceptor-technology/trender',
-    download_url=
-        'https://github.com/transceptor-technology/'
-        'trender/tarball/{}'.format(VERSION),
+    download_url='https://github.com/transceptor-technology/'
+                 'trender/tarball/{}'.format(VERSION),
     keywords=['template', 'engine', 'render'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

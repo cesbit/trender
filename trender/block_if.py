@@ -1,6 +1,6 @@
 '''BlockIf, used for if, elif and else.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -16,8 +16,8 @@ from .constants import (
 class BlockIf:
 
     RE_IF = re.compile(
-        '^\s*#(if|elif)\s+@([{VAR_DOTS}]+)(\s*\(\s*(@[{VAR_DOTS}]+\s*(,\s*'
-        '@[{VAR_DOTS}]+\s*)*)?\))?\s*:\s*$'
+        r'^\s*#(if|elif)\s+@([{VAR_DOTS}]+)(\s*\(\s*(@[{VAR_DOTS}]+\s*(,\s*'
+        r'@[{VAR_DOTS}]+\s*)*)?\))?\s*:\s*$'
         .format(VAR_DOTS=VAR_DOTS),
         re.UNICODE)
 

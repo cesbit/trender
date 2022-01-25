@@ -1,6 +1,6 @@
 '''TRender (Template Render Engine)
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 from .lines import Lines

@@ -1,6 +1,6 @@
 '''BlockBlock, define a block.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -10,7 +10,7 @@ from .constants import ALWAYS_ALLOWED, LINE_END
 
 class BlockBlock:
 
-    RE_BLOCK = re.compile('^\s*#block\s+([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
+    RE_BLOCK = re.compile(r'^\s*#block\s+([a-zA-Z0-9_]+)\s*:\s*$', re.UNICODE)
 
     def __init__(self, lines):
         '''Initialize #block.'''

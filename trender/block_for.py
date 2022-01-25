@@ -1,6 +1,6 @@
 '''BlockFor, create a for loop.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -16,7 +16,7 @@ from .constants import (
 class BlockFor:
 
     RE_FOR = re.compile(
-        '^\s*#for\s+@([{VAR}]+)\s+in\s+@([{VAR_DOTS}]+)\s*:\s*$'
+        r'^\s*#for\s+@([{VAR}]+)\s+in\s+@([{VAR_DOTS}]+)\s*:\s*$'
         .format(VAR=VAR, VAR_DOTS=VAR_DOTS),
         re.UNICODE)
 

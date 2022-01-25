@@ -1,6 +1,6 @@
 '''Lines Class which is responsible for reading lines.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -11,8 +11,8 @@ from .exceptions import DefineBlockError, TemplateNotExistsError
 
 class Lines:
 
-    RE_BLOCK = re.compile('\s*#([a-zA-Z_]*)', re.UNICODE)
-    RE_INCLUDE = re.compile('^\s*#include\s+([{FILENAME}]+)\s*$'
+    RE_BLOCK = re.compile(r'\s*#([a-zA-Z_]*)', re.UNICODE)
+    RE_INCLUDE = re.compile(r'^\s*#include\s+([{FILENAME}]+)\s*$'
                             .format(FILENAME=FILENAME), re.UNICODE)
 
     def __init__(self, content_or_file, path=None):

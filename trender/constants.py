@@ -1,6 +1,6 @@
 '''Constants used by TRender.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 
@@ -47,5 +47,5 @@ MAP_LINE_TYPE = {
 }
 
 VAR = 'a-zA-Z0-9_'
-VAR_DOTS = VAR + '\.'
-FILENAME = 'a-zA-Z0-9_\-\./'
+VAR_DOTS = VAR + r'\.'
+FILENAME = r'a-zA-Z0-9_\-\./'

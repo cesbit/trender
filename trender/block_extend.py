@@ -1,6 +1,6 @@
 '''BlockExtend, extend template using another base template.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -16,7 +16,7 @@ from .constants import (
 
 class BlockExtend:
 
-    RE_EXTEND = re.compile('^\s*#extend\s+([{FILENAME}]+)\s*:\s*$'
+    RE_EXTEND = re.compile(r'^\s*#extend\s+([{FILENAME}]+)\s*:\s*$'
                            .format(FILENAME=FILENAME),
                            re.UNICODE)
 

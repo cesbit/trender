@@ -224,5 +224,6 @@ test include
     def tearDown(self):
         self.assertEqual(gc.collect(), 0, msg=self.id())
 
+
 if __name__ == '__main__':
     unittest.main()

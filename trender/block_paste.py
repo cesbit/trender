@@ -1,6 +1,6 @@
 '''BlockPaste, use a macro or block.
 
-:copyright: 2015, Jeroen van der Heijden (Transceptor Technology)
+:copyright: 2015, Jeroen van der Heijden (Cesbit)
 '''
 
 import re
@@ -10,7 +10,7 @@ from .constants import VAR
 
 class BlockPaste:
 
-    RE_PASTE = re.compile('^\s*#([{VAR}]+)\s*$'.format(VAR=VAR), re.UNICODE)
+    RE_PASTE = re.compile(r'^\s*#([{VAR}]+)\s*$'.format(VAR=VAR), re.UNICODE)
 
     def __init__(self, lines):
         '''Initialize a paste #block or #macro.'''

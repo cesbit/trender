@@ -1,3 +1,6 @@
+[![CI](https://github.com/transceptor-technology/trender/workflows/CI/badge.svg)](https://github.com/transceptor-technology/trender/actions)
+[![Release Version](https://img.shields.io/github/release/transceptor-technology/trender)](https://github.com/transceptor-technology/trender/releases)
+
 Template Render Engine
 ======================
 

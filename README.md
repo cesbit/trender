@@ -1,5 +1,5 @@
-[![CI](https://github.com/transceptor-technology/trender/workflows/CI/badge.svg)](https://github.com/transceptor-technology/trender/actions)
-[![Release Version](https://img.shields.io/github/release/transceptor-technology/trender)](https://github.com/transceptor-technology/trender/releases)
+[![CI](https://github.com/cesbit/trender/workflows/CI/badge.svg)](https://github.com/cesbit/trender/actions)
+[![Release Version](https://img.shields.io/github/release/cesbit/trender)](https://github.com/cesbit/trender/releases)
 
 Template Render Engine
 ======================

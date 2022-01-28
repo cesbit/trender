@@ -17,8 +17,8 @@ setup(
     description='Template Render Engine written in pure Python',
     author='Jeroen van der Heijden',
     author_email='jeroen@cesbit.com',
-    url='https://github.com/transceptor-technology/trender',
-    download_url='https://github.com/transceptor-technology/'
+    url='https://github.com/cesbit/trender',
+    download_url='https://github.com/cesbit/'
                  'trender/tarball/{}'.format(VERSION),
     keywords=['template', 'engine', 'render'],
     classifiers=[

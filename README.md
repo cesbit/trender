@@ -6,7 +6,7 @@ Template Render Engine
 
 Why TRender?
 ------------
-It is just another template render engine.
+It is just another template render engine written in native Python.
 
 Installation
 ------------
